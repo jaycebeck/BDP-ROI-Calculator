@@ -79,6 +79,14 @@ def main():
         """
     )
 
+    st.markdown("## Potential Other Costs")
+    st.markdown("#### Change by using BDP:")
+    st.markdown("- Cost of Phone Plans (minimize lines by using BDP)")
+    st.markdown("#### Constant Costs:")
+    st.markdown("- Cost of Gas for Delivery")
+    st.markdown("- Cost of Delivery Drivers")
+    st.markdown("- Cost of Delivery Vehicles")
+
 
 if __name__ == "__main__":
     main()

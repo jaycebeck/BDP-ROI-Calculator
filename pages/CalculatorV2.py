@@ -64,10 +64,14 @@ def calculatorV2():
     )
 
     bdp_order_rate = st.number_input(
-        "Increase in sales due to online ordering system (%)",
+        "Increase in sales due to online ordering system (%)*:",
         min_value=0,
         value=20,
         step=10,
+    )
+
+    st.write(
+        "*This value should be based on BDP's historical data and should not be an input from the user."
     )
 
     # Calculate ROI
