@@ -1,10 +1,15 @@
 import streamlit as st
+import numpy as np
+
+
+st.set_page_config(page_title="ROI Calculator", page_icon=":chart_with_upwards_trend:")
 
 
 def calculatorV2():
     st.title("BulkDelivery PRO ROI Calculator V2")
 
     st.markdown("## Updated version of the ROI Calculator")
+    st.markdown("### Revised after meeting on 4/18/2024")
     st.markdown("This current version includes:")
     st.markdown("- the number of orders in a day that can be taken by phone ordering.")
     st.markdown("- the increase of sales due to the online ordering system.")
@@ -58,6 +63,13 @@ def calculatorV2():
         step=0.25,
     )
 
+    bdp_order_rate = st.number_input(
+        "Increase in sales due to online ordering system (%)",
+        min_value=0,
+        value=20,
+        step=10,
+    )
+
     # Calculate ROI
     if st.button("Calculate ROI"):
 
@@ -75,7 +87,7 @@ def calculatorV2():
 
         cust_sales = (avg_sale_price * avg_num_orders) - cost_cust
 
-        bdp_orders = round(avg_num_orders + (avg_num_orders * 1.5))
+        bdp_orders = int(np.round(avg_num_orders * (1 + bdp_order_rate / 100)))
 
         cost_bdp = (avg_sale_price * bdp_orders) * commission_rate
 
@@ -93,9 +105,11 @@ def calculatorV2():
             f"BDP Online Ordering Revenue on {bdp_orders} orders: ${bdp_sales:.2f}"
         )
 
+        st.markdown(f"#### Daily ROI: {roi:.2f}%")
+
         st.markdown("### Monthly Values")
         st.markdown(
-            "Assuming 21 working days in a month and 30 days for BDP online ordering because orders can be take at any time."
+            "*Assuming an average of 21 working days in a month and an average 30 days for BDP online ordering because orders can be take at any time.*"
         )
 
         monthly_cust_cost = cost_cust * 21
@@ -107,6 +121,10 @@ def calculatorV2():
         monthly_cust_sales = cust_sales * 22
         monthly_bdp_sales = bdp_sales * 30
 
+        monthly_roi = (
+            (monthly_bdp_sales - monthly_cust_sales) / monthly_cust_sales
+        ) * 100
+
         st.write(f"Cost of Phone ordering per order made: ${monthly_cust_cost:.2f}")
         st.write(f"Cost of BDP online ordering per order made: ${monthly_bdp_cost:.2f}")
         st.write(
@@ -115,7 +133,8 @@ def calculatorV2():
         st.write(
             f"BDP Online Ordering Revenue on {avg_monthly_orders_bdp} orders: ${monthly_bdp_sales:.2f}"
         )
-        st.markdown(f"### ROI: {roi:.2f}%")
+
+        st.markdown(f"#### Monthly ROI: {monthly_roi:.2f}%")
 
 
 if __name__ == "__main__":

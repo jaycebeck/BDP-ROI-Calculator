@@ -3,6 +3,8 @@ import streamlit as st
 
 commission_rate = 0.025
 
+st.set_page_config(page_title="ROI Calculator", page_icon=":chart_with_upwards_trend:")
+
 
 # Streamlit app
 def calculator():
