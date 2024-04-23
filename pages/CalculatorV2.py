@@ -100,8 +100,8 @@ def calculatorV2():
         roi = ((bdp_sales - cust_sales) / cust_sales) * 100
 
         st.markdown("### Daily Values")
-        st.write(f"Cost of Phone ordering per order made: ${cost_cust:.2f}")
-        st.write(f"Cost of BDP online ordering per order made: ${cost_bdp:.2f}")
+        st.write(f"Cost of Phone ordering: ${cost_cust:.2f}")
+        st.write(f"Cost of BDP online ordering: ${cost_bdp:.2f}")
         st.write(
             f"Phone Ordering Revenue on {avg_num_orders} orders: ${cust_sales:.2f}"
         )
@@ -129,8 +129,8 @@ def calculatorV2():
             (monthly_bdp_sales - monthly_cust_sales) / monthly_cust_sales
         ) * 100
 
-        st.write(f"Cost of Phone ordering per order made: ${monthly_cust_cost:.2f}")
-        st.write(f"Cost of BDP online ordering per order made: ${monthly_bdp_cost:.2f}")
+        st.write(f"Cost of Phone ordering: ${monthly_cust_cost:.2f}")
+        st.write(f"Cost of BDP online ordering: ${monthly_bdp_cost:.2f}")
         st.write(
             f"Phone Ordering Revenue on {avg_monthly_orders} orders: ${monthly_cust_sales:.2f}"
         )
