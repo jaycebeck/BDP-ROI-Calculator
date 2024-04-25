@@ -70,7 +70,7 @@ def calculatorV3():
     comm_to_cust = st.checkbox("Comission Cost Given to Customers")
 
     # Calculate ROI
-    if st.button("Calculate ROI"):
+    if st.button("Calculate Profit"):
 
         commission_rate = 0.025
         employee_overhead = 1.3
