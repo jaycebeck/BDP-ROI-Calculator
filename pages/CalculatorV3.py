@@ -166,13 +166,13 @@ def calculatorV3():
         )
         st.bar_chart(data=df, height=400)
 
-        st.markdown("### Assumptions")
-        st.write(
-            "1. The average sale price is the same for both the current state and the BulkDelivery PRO state."
-        )
-        st.write(
-            "2. The average number of orders per day is the same for both the current state and the BulkDelivery PRO state but a 1/3 of orders are being placed outside of working hours."
-        )
+        # st.markdown("### Assumptions")
+        # st.write(
+        #     "1. The average sale price is the same for both the current state and the BulkDelivery PRO state."
+        # )
+        # st.write(
+        #     "2. The average number of orders per day is the same for both the current state and the BulkDelivery PRO state but a 1/3 of orders are being placed outside of working hours."
+        # )
 
 
 if __name__ == "__main__":
