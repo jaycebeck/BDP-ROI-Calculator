@@ -50,7 +50,10 @@ def calculator():
         commission_rate = 0.025
 
         cost_cust = (
-            (avg_time_organize_delivery + avg_time_to_take_order) * avg_worker_wage / 60
+            (avg_time_organize_delivery + avg_time_to_take_order)
+            * avg_worker_wage
+            * 1.4
+            / 60
         )
 
         cust_sales = avg_sale_price - cost_cust

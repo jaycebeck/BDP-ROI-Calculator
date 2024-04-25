@@ -17,7 +17,7 @@ def calculatorV2():
 
     avg_sale_price = st.slider(
         "Average sale price:",
-        min_value=0,
+        min_value=100,
         value=500,
         max_value=1000,
         step=10,
@@ -25,15 +25,15 @@ def calculatorV2():
 
     avg_num_orders = st.slider(
         "Average number of orders per day:",
-        min_value=0,
-        value=3,
+        min_value=5,
+        value=8,
         max_value=20,
         step=1,
     )
 
     avg_time_to_take_order = st.slider(
-        "Average time to take an order (minutes):",
-        min_value=0,
+        "Average time to take a phone order (minutes):",
+        min_value=5,
         value=5,
         max_value=20,
         step=1,
@@ -41,8 +41,8 @@ def calculatorV2():
 
     avg_time_organize_delivery = st.slider(
         "Average time to organize delivery with driver (minutes):",
-        min_value=0,
-        value=10,
+        min_value=5,
+        value=5,
         max_value=30,
         step=1,
     )
@@ -57,14 +57,14 @@ def calculatorV2():
 
     avg_worker_wage = st.slider(
         "Hourly wage of someone that takes orders:",
-        min_value=7.25,
-        value=16.25,
+        min_value=16.0,
+        value=20.0,
         max_value=30.0,
         step=0.25,
     )
 
     bdp_order_rate = st.number_input(
-        "Increase in sales due to online ordering system (%)*:",
+        "Increase in sales due to 24/7 online availability (%)*:",
         min_value=0,
         value=20,
         step=10,
@@ -84,6 +84,7 @@ def calculatorV2():
             * (
                 (avg_time_organize_delivery + avg_time_to_take_order)
                 * avg_worker_wage
+                * 1.4
                 / 60
             )
             / avg_num_orders
