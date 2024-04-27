@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="ROI Calculator", page_icon=":chart_with_upwards_trend:")
+st.set_page_config(page_title="Bulk Delivery PRO Calculator", page_icon=":chart_with_upwards_trend:")
 
 
 # Main function to switch between pages

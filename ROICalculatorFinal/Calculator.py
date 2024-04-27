@@ -2,16 +2,18 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-st.set_page_config(page_title="ROI Calculator", page_icon=":chart_with_upwards_trend:")
+st.set_page_config(
+    page_title="Bulk Delivery PRO Calculator", page_icon=":chart_with_upwards_trend:"
+)
 
 
-def calculatorV3():
+def calculator():
     st.title("BulkDelivery PRO Profit Calculator")
 
     st.write(
-        "BulkDelivery PRO is a service that allows for their customers to seamlessly integrate online ordering to their bulk delivery goods such as a gravel, soil or mulch. "
-        "This calculator helps you estimate the profit you can make by using BulkDelivery PRO. "
-        "You can adjust the variables below to see how much profit you can make by using BulkDelivery PRO."
+        "BulkDelivery PRO is a service that allows for their customers to seamlessly integrate online ordering to their bulk delivery goods businesses. "
+        "This calculator helps to estimate the profit that can be made by using BulkDelivery PRO. "
+        "The variables below can be adjusted to see how much profit that can be added by using BulkDelivery PRO."
     )
 
     explanation_on = st.toggle("Show Variable Explanations")
@@ -170,8 +172,11 @@ def calculatorV3():
                 st.write(f"Commission Cost to Business: ${commission:.2f}")
             st.write(f"Profit: ${new_profit:.2f}")
 
-
-            st.write("**Positive Profit Difference**: ${:.2f}".format(new_profit - current_profit))
+            st.write(
+                "**Positive Profit Difference**: ${:.2f}".format(
+                    new_profit - current_profit
+                )
+            )
 
         df = pd.DataFrame(
             {
@@ -183,4 +188,4 @@ def calculatorV3():
 
 
 if __name__ == "__main__":
-    calculatorV3()
+    calculator()
