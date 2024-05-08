@@ -63,9 +63,9 @@ def calculator():
 
     avg_time_to_take_order = st.slider(
         "Average time to take a phone order (minutes):",
-        min_value=4,
-        value=5,
-        max_value=20,
+        min_value=5,
+        value=10,
+        max_value=25,
         step=1,
     )
 
@@ -101,7 +101,9 @@ def calculator():
         step=0.01,
     )
 
-    comm_to_cust = st.checkbox("Comission Cost Given to Customers")
+    comm_to_cust = st.checkbox(
+        "Give software fee to customers to remove commission cost."
+    )
 
     # Calculate ROI
     if st.button("Calculate Profit"):
@@ -116,7 +118,7 @@ def calculator():
             st.subheader("Basic Ordering System(Phone Orders)")
             # Current Sales
             current_sales = avg_sale_price * avg_num_orders * 22
-            st.write(f"Sales: ${current_sales:.2f}")
+            st.write(f"Sales: ${current_sales:,}")
 
             # Current Employee Cost
             current_employee_cost = (
@@ -128,11 +130,13 @@ def calculator():
                 * 22
                 * avg_num_orders
             )
-            st.write(f"Cost of Employee to take Orders: ${current_employee_cost:.2f}")
+            st.write(
+                f"Cost of Employee to take Orders: ${int(current_employee_cost):,}"
+            )
 
             # Current Profit
             current_profit = current_sales - current_employee_cost
-            st.write(f"Profit: ${current_profit:.2f}")
+            st.write(f"Profit: ${int(current_profit):,}")
 
         with col2:
             st.subheader("Add Online Ordering with BulkDelivery PRO")
@@ -144,7 +148,7 @@ def calculator():
                 avg_sale_price * (new_orders_phone) * 22
                 + new_orders_online * avg_sale_price * 30
             )
-            st.write(f"Sales: ${new_sales:.2f}")
+            st.write(f"Sales: ${int(new_sales):,}")
 
             # New Employee Cost assuming number of employees is halved
             new_employee_cost = (
@@ -158,7 +162,7 @@ def calculator():
                 * avg_num_orders
             )
 
-            st.write(f"Cost of Employee to take Orders: ${new_employee_cost:.2f}")
+            st.write(f"Cost of Employee to take Orders: ${int(new_employee_cost):,}")
 
             # BulkDelivery PRO Commission
             commission = new_orders_online * avg_sale_price * commission_rate * 30
@@ -166,15 +170,15 @@ def calculator():
             # New Profit depending on if commission is given to customers
             if comm_to_cust:
                 new_profit = new_sales - new_employee_cost
-                st.write(f"Commission Cost to Business: ${0.0}")
+                st.write(f"Commission Cost to Business: $0.00")
             else:
                 new_profit = new_sales - new_employee_cost - commission
-                st.write(f"Commission Cost to Business: ${commission:.2f}")
-            st.write(f"Profit: ${new_profit:.2f}")
+                st.write(f"Commission Cost to Business: ${int(commission):,}")
+            st.write(f"Profit: ${int(new_profit):,}")
 
             st.write(
-                "**Positive Profit Difference**: ${:.2f}".format(
-                    new_profit - current_profit
+                "**Positive Profit Difference**: ${:0.0f}".format(
+                    new_profit - current_profit, ","
                 )
             )
 
