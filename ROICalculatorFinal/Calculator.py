@@ -177,9 +177,7 @@ def calculator():
             st.write(f"Profit: ${int(new_profit):,}")
 
             st.write(
-                "**Positive Profit Difference**: ${:0.0f}".format(
-                    new_profit - current_profit, ","
-                )
+                f"**Positive Profit Difference**: ${int(new_profit - current_profit):,}"
             )
 
         df = pd.DataFrame(
